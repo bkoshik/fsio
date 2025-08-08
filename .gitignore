@@ -15,3 +15,6 @@ target
 
 # RustRover
 .idea/
+
+# Test files
+test.txt
