@@ -39,7 +39,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-##File Metadata
+## File Metadata
 Access file metadata:
 ```rust
 let metadata = file.metadata()?;
