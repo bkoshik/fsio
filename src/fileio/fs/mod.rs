@@ -1,3 +1,3 @@
-mod open;
-mod as_fd;
-mod metadata;
+pub mod open;
+pub mod as_fd;
+pub mod metadata;
