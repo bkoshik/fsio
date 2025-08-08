@@ -7,10 +7,7 @@ use std::{
 };
 use nix::unistd::write;
 use crate::{
-    errors::{
-        Error,
-        Result
-    },
+    errors::*,
     fileio::FileIO
 };
 

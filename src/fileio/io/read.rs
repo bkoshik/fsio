@@ -7,10 +7,7 @@ use nix::{
     unistd::read
 };
 use crate::{
-    errors::{
-        Error,
-        Result
-    },
+    errors::*,
     fileio::FileIO
 };
 

@@ -5,10 +5,7 @@ use nix::{
     unistd::Whence
 };
 use crate::{
-    errors::{
-        Error,
-        Result
-    },
+    errors::*,
     fileio::FileIO
 };
 
@@ -16,8 +13,9 @@ impl FileIO {
     pub fn seek(&mut self, offset: isize, whence: Whence) -> Result<isize> {
         return Ok(
             lseek(&self.file, offset as off_t, whence)
-                .map_err(|e| Error::Io(IoError::new(ErrorKind::InvalidData, e))
-            )? as isize
+                .map_err(
+                    |e| Error::Io(IoError::new(ErrorKind::InvalidData, e))
+                )? as isize
         );
     }
 }
