@@ -1,4 +1,8 @@
 mod flags;
-pub mod fileio;
+mod fs;
 
-pub use fileio::FileIO;
+use std::os::fd::OwnedFd;
+
+pub struct FileIO {
+    file: OwnedFd
+}
