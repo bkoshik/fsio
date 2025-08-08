@@ -1,10 +1,10 @@
 use std::io::Error;
 use crate::{
     errors::*,
+    prelude::Write,
     fileio::{
         FileIO,
-        flags::whence_flags::START_POS,
-        prelude::Write
+        flags::whence_flags::START_POS
     }
 };
 

@@ -3,3 +3,5 @@ pub mod write;
 pub mod seek;
 pub mod tell;
 pub mod insert;
+pub mod replace;
+pub mod truncate;

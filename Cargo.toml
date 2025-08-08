@@ -9,3 +9,4 @@ path = "src/lib.rs"
 [dependencies]
 nix = { version = "0.30.1", features = ["fs"] }
 thiserror = "2.0.12"
+regex = "1.11.1"
