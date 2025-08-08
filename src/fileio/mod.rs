@@ -1,5 +1,6 @@
 mod flags;
 mod fs;
+mod io;
 
 use std::os::fd::OwnedFd;
 

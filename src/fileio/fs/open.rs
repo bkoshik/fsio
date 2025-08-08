@@ -1,17 +1,29 @@
-use std::os::fd::OwnedFd;
-use std::path::PathBuf;
-use nix::fcntl::{open, OFlag};
-use nix::sys::stat::Mode;
+use std::{
+    os::fd::OwnedFd,
+    path::PathBuf
+};
+use nix::{
+    fcntl::{
+        open,
+        OFlag
+    }, 
+    sys::stat::Mode
+};
 use std::io::Error as IoError;
-use crate::errors::{Error, Result};
-use crate::fileio::FileIO;
+use crate::{
+    errors::{
+        Error,
+        Result
+    },
+    fileio::FileIO
+};
 
 pub trait Open<T>: Sized
 where
     T: AsRef<PathBuf>,
 {
     type Error;
-    
+
     fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self>;
 }
 
