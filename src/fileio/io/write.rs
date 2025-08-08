@@ -41,6 +41,6 @@ where
             }
         }
 
-        Ok(written)
+        return Ok(written);
     }
 }
