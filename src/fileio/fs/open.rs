@@ -1,6 +1,6 @@
 use std::{
     os::fd::OwnedFd,
-    path::PathBuf
+    path::Path
 };
 use nix::{
     fcntl::{
@@ -20,7 +20,7 @@ use crate::{
 
 pub trait Open<T>: Sized
 where
-    T: AsRef<PathBuf>,
+    T: AsRef<Path>,
 {
     type Error;
 
@@ -29,7 +29,7 @@ where
 
 impl<T> Open<T> for FileIO
 where
-    T: AsRef<PathBuf>,
+    T: AsRef<Path>,
 {
     type Error = Error;
 
