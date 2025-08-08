@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Set up Rust
-      uses: actions-rs/setup-rust@v1
+      uses: actions-use/setup-rust@stable
       with:
         rust-version: stable
     - name: Build
