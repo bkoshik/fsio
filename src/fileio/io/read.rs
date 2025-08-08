@@ -1,4 +1,7 @@
-use std::io::{Error as IoError, ErrorKind};
+use std::io::{
+    Error as IoError, 
+    ErrorKind
+};
 use nix::{
     sys::stat::fstat,
     unistd::read
