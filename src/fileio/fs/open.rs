@@ -12,7 +12,7 @@ where
 {
     type Error;
     
-    fn open(path: T, flags: OFlag) -> Result<Self>;
+    fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self>;
 }
 
 impl<T> Open<T> for FileIO
@@ -21,11 +21,11 @@ where
 {
     type Error = Error;
 
-    fn open(path: T, flags: OFlag) -> Result<Self> {
+    fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self> {
         let file: OwnedFd = open(
             path.as_ref(),
             flags,
-            Mode::all()
+            perms
         ).map_err(|e| Error::Io(IoError::from_raw_os_error(e as i32)))?;
 
         return Ok(FileIO {
