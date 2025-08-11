@@ -5,6 +5,7 @@ use nix::{
     sys::stat::Mode
 };
 
+#[derive(Debug)]
 pub struct File {
     pub(crate) file: OwnedFd
 }

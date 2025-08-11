@@ -62,6 +62,13 @@ mod test {
         assert!(metadata.uid() > 0, "UID should be positive");
         assert!(metadata.gid() > 0, "GID should be positive");
 
+        let other_file = FileBuilder::new()
+            .read()
+            .permissions(0o755)
+            .open("test.txt")?;
+
+        assert_eq!(other_file, file, "File should be opened");
+
         return Ok(());
     }
 }
