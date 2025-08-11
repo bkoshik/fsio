@@ -47,6 +47,12 @@ mod test {
         let _ = file.seek(0, START_POS)?;
         let data = file.read()?;
         assert_eq!(data, "Heo");
+        
+        let _ = file.seek(0, START_POS)?;
+        let _ = file.write("N")?;
+        let _ = file.seek(0, START_POS)?;
+        let data = file.read()?;
+        assert_eq!(data, "Neo");
 
         let metadata = file.metadata()?;
 

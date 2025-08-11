@@ -1,10 +1,23 @@
-use std::os::fd::AsFd;
-use std::io::{Error as IoError, ErrorKind};
-use nix::sys::stat::{fstat, SFlag};
-use crate::errors::{Error, Result};
-use crate::fileio::FileIO;
+use std::{
+    io::{
+        Error as IoError,
+        ErrorKind
+    },
+    os::fd::AsFd
+};
+use nix::sys::stat::{
+    fstat,
+    SFlag
+};
+use crate::{
+    fileio::FileIO,
+    errors::{
+        Error,
+        Result
+    }
+};
 
-pub struct FileMetadata {
+pub struct FileIOMetadata {
     pub file_type: SFlag,
     pub size: u64,
     pub accessed_time: i64,
@@ -15,13 +28,13 @@ pub struct FileMetadata {
 }
 
 impl FileIO {
-    pub fn metadata(&self) -> Result<FileMetadata> {
+    pub fn metadata(&self) -> Result<FileIOMetadata> {
         let metadata = fstat(self.as_fd())
             .map_err(|e| Error::Io(IoError::new(ErrorKind::InvalidData, e)))?;
 
         let filetype = SFlag::from_bits_truncate(metadata.st_mode);
 
-        Ok(FileMetadata {
+        Ok(FileIOMetadata {
             file_type: filetype,
             size: metadata.st_size as u64,
             accessed_time: metadata.st_atime,
