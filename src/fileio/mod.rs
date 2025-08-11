@@ -1,11 +1,9 @@
 mod fs;
 mod io;
+mod builder;
+
+mod types;
 
 pub mod prelude;
-pub mod builder;
 
-use std::os::fd::OwnedFd;
-
-pub struct FileIO {
-    file: OwnedFd
-}
+pub use self::types::*;

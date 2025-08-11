@@ -1,5 +1,5 @@
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
-use crate::fileio::fs::metadata::FileIOMetadata;
+use crate::fileio::FileIOMetadata;
 
 impl FileIOMetadata {
     pub fn birth_time(&self) -> SystemTime {

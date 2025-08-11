@@ -3,8 +3,8 @@ use nix::{
     sys::stat::Mode,
     libc::mode_t
 };
-use crate::fileio::builder::FileIOBuilder;
-        
+use crate::fileio::FileIOBuilder;
+
 impl FileIOBuilder {
     pub fn new() -> Self {
         return Self {

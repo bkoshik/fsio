@@ -5,11 +5,10 @@ pub mod prelude;
 
 #[cfg(test)]
 mod test {
-    use std::cmp::PartialEq;
     use crate::{
         fileio::{
-            fs::metadata::file_type::FileIOType,
-            builder::FileIOBuilder
+            FileIOType,
+            FileIOBuilder
         },
         flags::whence_flags::*,
         prelude::*,

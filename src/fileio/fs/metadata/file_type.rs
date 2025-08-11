@@ -1,17 +1,5 @@
 use nix::sys::stat::SFlag;
-use crate::fileio::fs::metadata::FileIOMetadata;
-
-#[derive(Debug, PartialEq, Eq)]
-pub enum FileIOType {
-    Regular,
-    Symlink,
-    Directory,
-    BlockDevice,
-    CharDevice,
-    Socket,
-    MaskType,
-    NamedPipe,
-}
+use crate::fileio::{FileIOMetadata, FileIOType};
 
 impl FileIOMetadata {
     pub fn file_type(&self) -> Option<FileIOType> {

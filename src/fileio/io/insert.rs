@@ -1,8 +1,10 @@
 use crate::{
     errors::*,
-    prelude::Write,
     flags::whence_flags::START_POS,
-    fileio::FileIO,
+    fileio::{
+        FileIO,
+        prelude::Write,
+    },
 };
 
 pub trait Insert<T>: Sized

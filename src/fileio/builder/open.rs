@@ -1,9 +1,9 @@
 use crate::{
     errors::Result,
-    prelude::OpenFS,
     fileio::{
+        prelude::OpenFS,
         FileIO,
-        builder::FileIOBuilder
+        FileIOBuilder
     }
 };
 

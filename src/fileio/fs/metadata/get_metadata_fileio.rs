@@ -10,7 +10,7 @@ use crate::{
     errors::Error,
     fileio::{
         FileIO,
-        fs::metadata::FileIOMetadata
+        FileIOMetadata
     }
 };
 

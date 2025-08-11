@@ -1,4 +1,4 @@
-use crate::fileio::fs::metadata::FileIOMetadata;
+use crate::fileio::FileIOMetadata;
 
 impl FileIOMetadata {
     pub fn size(&self) -> usize {

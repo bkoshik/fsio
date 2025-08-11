@@ -5,10 +5,10 @@ use std::io::{
 use regex::Regex;
 use crate::{
     errors::*,
-    prelude::Write,
     flags::whence_flags::START_POS,
     fileio::{
         FileIO,
+        prelude::Write,
     }
 };
 
