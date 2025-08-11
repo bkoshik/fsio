@@ -23,6 +23,6 @@ where
         let _ = self.seek(offset, START_POS)?;
         let _ = self.write(format!("{}{}", buf.as_ref(), data_from_offset))?;
 
-        return Ok(self.metadata()?.size as usize);
+        return Ok(self.metadata()?.size());
     }
 }
