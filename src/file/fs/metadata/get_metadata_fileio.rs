@@ -8,18 +8,18 @@ use std::{
 use nix::sys::stat::fstat;
 use crate::{
     errors::Error,
-    fileio::{
-        FileIO,
-        FileIOMetadata
+    file::{
+        File,
+        FileMetadata
     }
 };
 
-impl FileIO {
-    pub fn metadata(&self) -> crate::errors::Result<FileIOMetadata> {
+impl File {
+    pub fn metadata(&self) -> crate::errors::Result<FileMetadata> {
         let metadata = fstat(self.as_fd())
             .map_err(|e| Error::Io(IoError::new(ErrorKind::InvalidData, e)))?;
 
-        Ok(FileIOMetadata {
+        Ok(FileMetadata {
             stat: metadata
         })
     }

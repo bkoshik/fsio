@@ -1,4 +1,4 @@
-pub use crate::fileio::{
+pub use crate::file::{
     builder::open::OpenBuilder,
     fs::open::OpenFS,
     io::{

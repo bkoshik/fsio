@@ -6,8 +6,8 @@ use regex::Regex;
 use crate::{
     errors::*,
     flags::whence_flags::START_POS,
-    fileio::{
-        FileIO,
+    file::{
+        File,
         prelude::Write,
     }
 };
@@ -18,7 +18,7 @@ pub trait Replace<T> {
     fn replace(&mut self, from: T, to: T) -> Result<usize>;
 }
 
-impl<T> Replace<T> for FileIO
+impl<T> Replace<T> for File
 where
     T: AsRef<str>,
 {

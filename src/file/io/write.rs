@@ -8,7 +8,7 @@ use std::{
 use nix::unistd::write;
 use crate::{
     errors::*,
-    fileio::FileIO
+    file::File
 };
 
 pub trait Write<T>: Sized
@@ -18,7 +18,7 @@ where
     fn write(&mut self, buf: T) -> Result<usize>;
 }
 
-impl<T> Write<T> for FileIO
+impl<T> Write<T> for File
 where
     T: AsRef<str>,
 {

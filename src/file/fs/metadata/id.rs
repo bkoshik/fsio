@@ -1,6 +1,6 @@
-use crate::fileio::FileIOMetadata;
+use crate::file::FileMetadata;
 
-impl FileIOMetadata {
+impl FileMetadata {
     pub fn uid(&self) -> u32 {
         return self.stat.st_uid
     }

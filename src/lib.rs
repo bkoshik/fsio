@@ -1,4 +1,4 @@
-pub mod fileio;
+pub mod file;
 pub mod flags;
 pub mod errors;
 pub mod prelude;
@@ -6,9 +6,9 @@ pub mod prelude;
 #[cfg(test)]
 mod test {
     use crate::{
-        fileio::{
-            FileIOType,
-            FileIOBuilder
+        file::{
+            FileType,
+            FileBuilder
         },
         flags::whence_flags::*,
         prelude::*,
@@ -16,7 +16,7 @@ mod test {
 
     #[test]
     fn it_works() -> Result<(), Box<dyn std::error::Error>> {
-        let mut file = FileIOBuilder::new()
+        let mut file = FileBuilder::new()
             .read_write()
             .create()
             .truncate()
@@ -56,7 +56,7 @@ mod test {
 
         let metadata = file.metadata()?;
 
-        assert_eq!(metadata.file_type().unwrap(), FileIOType::Regular);
+        assert_eq!(metadata.file_type().unwrap(), FileType::Regular);
         assert_eq!(metadata.size(), 3);
 
         assert!(metadata.uid() > 0, "UID should be positive");

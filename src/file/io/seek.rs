@@ -9,10 +9,10 @@ use nix::{
 };
 use crate::{
     errors::*,
-    fileio::FileIO
+    file::File
 };
 
-impl FileIO {
+impl File {
     pub fn seek(&mut self, offset: isize, whence: Whence) -> Result<isize> {
         return Ok(
             lseek(&self.file, offset as off_t, whence)

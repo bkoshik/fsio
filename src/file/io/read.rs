@@ -8,10 +8,10 @@ use nix::{
 };
 use crate::{
     errors::*,
-    fileio::FileIO
+    file::File
 };
 
-impl FileIO {
+impl File {
     pub fn read(&self) -> Result<String> {
         let len: usize = fstat(&self.file)
             .map_err(|e| Error::Io(IoError::new(ErrorKind::InvalidInput, e)))?

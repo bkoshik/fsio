@@ -5,21 +5,21 @@ use nix::{
     sys::stat::Mode
 };
 
-pub struct FileIO {
+pub struct File {
     pub(crate) file: OwnedFd
 }
 
-pub struct FileIOBuilder {
+pub struct FileBuilder {
     pub(crate) flags: OFlag,
     pub(crate) permissions: Mode
 }
 
-pub struct FileIOMetadata {
+pub struct FileMetadata {
     pub(crate) stat: stat
 }
 
 #[derive(Debug, PartialEq, Eq)]
-pub enum FileIOType {
+pub enum FileType {
     Regular,
     Symlink,
     Directory,

@@ -6,12 +6,12 @@ use nix::unistd::lseek;
 use crate::{
     errors::*,
     flags::whence_flags::CURRENT_POS,
-    fileio::{
-        FileIO,
+    file::{
+        File,
     }
 };
 
-impl FileIO {
+impl File {
     pub fn tell(&mut self) -> Result<usize> {
         return Ok(
             lseek(&self.file, 0, CURRENT_POS)

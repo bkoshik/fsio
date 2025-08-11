@@ -3,9 +3,9 @@ use nix::{
     sys::stat::Mode,
     libc::mode_t
 };
-use crate::fileio::FileIOBuilder;
+use crate::file::FileBuilder;
 
-impl FileIOBuilder {
+impl FileBuilder {
     pub fn new() -> Self {
         return Self {
             flags: OFlag::empty(),

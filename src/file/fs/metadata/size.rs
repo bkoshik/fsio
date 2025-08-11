@@ -1,6 +1,6 @@
-use crate::fileio::FileIOMetadata;
+use crate::file::FileMetadata;
 
-impl FileIOMetadata {
+impl FileMetadata {
     pub fn size(&self) -> usize {
         return self.stat.st_size as usize;
     }

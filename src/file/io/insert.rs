@@ -1,8 +1,8 @@
 use crate::{
     errors::*,
     flags::whence_flags::START_POS,
-    fileio::{
-        FileIO,
+    file::{
+        File,
         prelude::Write,
     },
 };
@@ -14,7 +14,7 @@ where
     fn insert(&mut self, offset: isize, buf: T) -> Result<usize>;
 }
 
-impl<T> Insert<T> for FileIO
+impl<T> Insert<T> for File
 where
     T: AsRef<str>
 {
