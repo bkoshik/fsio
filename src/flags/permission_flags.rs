@@ -13,3 +13,4 @@ pub const OTHERS_WRITE: Mode = Mode::S_IWOTH;
 pub const OTHERS_EXEC: Mode  = Mode::S_IXOTH;
 
 pub const ALL: Mode = Mode::all();
+pub const EMPTY: Mode = Mode::empty();

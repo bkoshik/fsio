@@ -6,9 +6,9 @@ use regex::Regex;
 use crate::{
     errors::*,
     prelude::Write,
+    flags::whence_flags::START_POS,
     fileio::{
         FileIO,
-        flags::whence_flags::START_POS
     }
 };
 

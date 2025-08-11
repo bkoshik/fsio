@@ -1,25 +1,27 @@
 pub mod fileio;
+pub mod flags;
 pub mod errors;
 pub mod prelude;
 
 #[cfg(test)]
 mod test {
     use crate::{
-        fileio::{
-            FileIO,
-            flags::{
-                open_flags::*,
-                permission_flags::*,
-                whence_flags::*,
-                file_type_flags::*
-            }
+        fileio::builder::FileIOBuilder,
+        flags::{
+            whence_flags::*,
+            file_type_flags::*
         },
         prelude::*,
     };
 
     #[test]
     fn it_works() -> Result<(), Box<dyn std::error::Error>> {
-        let mut file = FileIO::open("test.txt", READ_WRITE | CREATE | TRUNCATE, ALL)?;
+        let mut file = FileIOBuilder::new()
+            .read_write()
+            .create()
+            .truncate()
+            .permissions(0o755)
+            .open("test.txt")?;
         let _ = file.write("Helloworld!")?;
         let _ = file.seek(0, START_POS)?;
 

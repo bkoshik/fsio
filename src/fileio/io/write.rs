@@ -13,9 +13,8 @@ use crate::{
 
 pub trait Write<T>: Sized
 where
-    T: AsRef<str>{
-    type Error;
-
+    T: AsRef<str>
+{
     fn write(&mut self, buf: T) -> Result<usize>;
 }
 
@@ -23,8 +22,6 @@ impl<T> Write<T> for FileIO
 where
     T: AsRef<str>,
 {
-    type Error = Error;
-
     fn write(&mut self, buf: T) -> Result<usize> {
         let bytes = buf.as_ref().as_bytes();
         let mut written = 0;

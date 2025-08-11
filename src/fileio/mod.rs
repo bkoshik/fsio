@@ -1,8 +1,8 @@
 mod fs;
 mod io;
 
-pub mod flags;
 pub mod prelude;
+pub mod builder;
 
 use std::os::fd::OwnedFd;
 

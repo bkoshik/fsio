@@ -1,16 +1,14 @@
-use std::io::Error;
 use crate::{
     errors::*,
     prelude::Write,
-    fileio::{
-        FileIO,
-        flags::whence_flags::START_POS
-    }
+    flags::whence_flags::START_POS,
+    fileio::FileIO,
 };
 
-pub trait Insert<T>: Sized {
-    type Error;
-
+pub trait Insert<T>: Sized
+where
+    T: AsRef<str>
+{
     fn insert(&mut self, offset: isize, buf: T) -> Result<usize>;
 }
 
@@ -18,8 +16,6 @@ impl<T> Insert<T> for FileIO
 where
     T: AsRef<str>
 {
-    type Error = Error;
-
     fn insert(&mut self, offset: isize, buf: T) -> Result<usize> {
         let _ = self.seek(offset, START_POS)?;
         let data_from_offset = self.read()?;

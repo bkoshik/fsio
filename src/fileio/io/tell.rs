@@ -5,9 +5,9 @@ use std::io::{
 use nix::unistd::lseek;
 use crate::{
     errors::*,
+    flags::whence_flags::CURRENT_POS,
     fileio::{
         FileIO,
-        flags::whence_flags::CURRENT_POS
     }
 };
 

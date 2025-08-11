@@ -1,6 +1,9 @@
-pub use crate::fileio::fs::open::Open;
-pub use crate::fileio::io::{
-    write::Write,
-    insert::Insert,
-    replace::Replace
+pub use crate::fileio::{
+    builder::open::OpenBuilder,
+    fs::open::OpenFS,
+    io::{
+        write::Write,
+        insert::Insert,
+        replace::Replace
+    }
 };

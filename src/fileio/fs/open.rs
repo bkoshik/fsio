@@ -18,21 +18,17 @@ use crate::{
     fileio::FileIO
 };
 
-pub trait Open<T>: Sized
+pub trait OpenFS<T>: Sized
 where
     T: AsRef<Path>,
 {
-    type Error;
-
     fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self>;
 }
 
-impl<T> Open<T> for FileIO
+impl<T> OpenFS<T> for FileIO
 where
     T: AsRef<Path>,
 {
-    type Error = Error;
-
     fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self> {
         let file: OwnedFd = open(
             path.as_ref(),
