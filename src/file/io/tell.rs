@@ -12,7 +12,7 @@ use crate::{
 };
 
 impl File {
-    pub fn tell(&mut self) -> Result<usize> {
+    pub fn tell(&self) -> Result<usize> {
         return Ok(
             lseek(&self.file, 0, CURRENT_POS)
                .map_err(

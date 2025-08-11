@@ -10,6 +10,7 @@ use crate::{
     errors::*,
     file::File
 };
+use crate::flags::whence_flags::START_POS;
 
 impl File {
     pub fn read(&self) -> Result<String> {
@@ -37,5 +38,29 @@ impl File {
         }
 
         return Ok(lines);
+    }
+}
+
+impl File {
+    pub fn read_from_start(&mut self) -> Result<String> {
+        let cur = self.tell()?;
+        
+        let _ =self.seek(0, START_POS)?;
+        let data = self.read()?;
+        
+        let _ = self.seek(cur as isize, START_POS);
+        
+        return Ok(data);
+    }
+
+    pub fn read_lines_from_start(&mut self) -> Result<Vec<String>> {
+        let cur = self.tell()?;
+
+        let _ =self.seek(0, START_POS)?;
+        let data = self.read_lines()?;
+
+        let _ = self.seek(cur as isize, START_POS);
+
+        return Ok(data);
     }
 }
