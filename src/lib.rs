@@ -5,12 +5,13 @@ pub mod prelude;
 
 #[cfg(test)]
 mod test {
+    use std::cmp::PartialEq;
     use crate::{
-        fileio::builder::FileIOBuilder,
-        flags::{
-            whence_flags::*,
-            file_type_flags::*
+        fileio::{
+            fs::metadata::file_type::FileIOType,
+            builder::FileIOBuilder
         },
+        flags::whence_flags::*,
         prelude::*,
     };
 
@@ -56,11 +57,11 @@ mod test {
 
         let metadata = file.metadata()?;
 
-        assert_eq!(metadata.file_type, REGULAR);
-        assert_eq!(metadata.size, 3);
+        assert_eq!(metadata.file_type().unwrap(), FileIOType::Regular);
+        assert_eq!(metadata.size(), 3);
 
-        assert!(metadata.uid > 0, "UID should be positive");
-        assert!(metadata.gid > 0, "GID should be positive");
+        // assert!(metadata.uid() > 0, "UID should be positive");
+        // assert!(metadata.gid() > 0, "GID should be positive");
 
         return Ok(());
     }

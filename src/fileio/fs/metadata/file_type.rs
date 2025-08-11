@@ -1,6 +1,7 @@
 use nix::sys::stat::SFlag;
 use crate::fileio::fs::metadata::FileIOMetadata;
 
+#[derive(Debug, PartialEq, Eq)]
 pub enum FileIOType {
     Regular,
     Symlink,
