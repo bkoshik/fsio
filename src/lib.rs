@@ -47,7 +47,7 @@ mod test {
         let _ = file.seek(0, START_POS)?;
         let data = file.read()?;
         assert_eq!(data, "Heo");
-        
+
         let _ = file.seek(0, START_POS)?;
         let _ = file.write("N")?;
         let _ = file.seek(0, START_POS)?;
@@ -59,8 +59,8 @@ mod test {
         assert_eq!(metadata.file_type().unwrap(), FileIOType::Regular);
         assert_eq!(metadata.size(), 3);
 
-        // assert!(metadata.uid() > 0, "UID should be positive");
-        // assert!(metadata.gid() > 0, "GID should be positive");
+        assert!(metadata.uid() > 0, "UID should be positive");
+        assert!(metadata.gid() > 0, "GID should be positive");
 
         return Ok(());
     }
