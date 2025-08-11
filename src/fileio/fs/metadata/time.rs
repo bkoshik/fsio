@@ -2,6 +2,7 @@ use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use crate::fileio::FileIOMetadata;
 
 impl FileIOMetadata {
+    #[cfg(any(target_os = "macos", target_os = "freebsd", target_os = "openbsd", target_os = "netbsd", target_os = "dragonfly"))]
     pub fn birth_time(&self) -> SystemTime {
         return UNIX_EPOCH + Duration::new(self.stat.st_birthtime as u64, self.stat.st_birthtime_nsec as u32);
     }
