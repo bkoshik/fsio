@@ -7,6 +7,7 @@ edition = "2024"
 path = "src/lib.rs"
 
 [dependencies]
-nix = { version = "0.30.1", features = ["fs"] }
+nix = { version = "0.30.1", features = ["fs", "dir"] }
 thiserror = "2.0.12"
 regex = "1.11.1"
+libc = "0.2.174"
