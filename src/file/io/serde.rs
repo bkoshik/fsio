@@ -6,27 +6,27 @@ use crate::{
 };
 
 impl File {
-    pub fn json<T>(&self) -> Result<T>
+    pub fn json<T>(&mut self) -> Result<T>
     where
         T: DeserializeOwned
     {
-        return serde_json::from_str(&self.read()?)
+        return serde_json::from_str(&self.read_from_start()?)
             .map_err(|e| Error::Io(IoError::new(ErrorKind::Other, e)));
     }
 
-    pub fn yaml<T>(&self) -> Result<T>
+    pub fn yaml<T>(&mut self) -> Result<T>
     where
         T: DeserializeOwned
     {
-        return serde_yaml::from_str(&self.read()?)
+        return serde_yaml::from_str(&self.read_from_start()?)
             .map_err(|e| Error::Io(IoError::new(ErrorKind::Other, e)));
     }
 
-    pub fn toml<T>(&self) -> Result<T>
+    pub fn toml<T>(&mut self) -> Result<T>
     where
         T: DeserializeOwned
     {
-        return toml::from_str(&self.read()?)
+        return toml::from_str(&self.read_from_start()?)
             .map_err(|e| Error::Io(IoError::new(ErrorKind::Other, e)));
     }
 }
