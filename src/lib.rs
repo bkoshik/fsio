@@ -68,9 +68,9 @@ mod test {
         let json_data =
 r#"
 {
-    "name": "JSON Statham"
-    "age": 122
-    "yes?": true
+    "name": "JSON Statham",
+    "age": 122,
+    "yes?": true,
 }
 "#;
         let _ = file.write(json_data)?;
