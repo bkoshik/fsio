@@ -25,14 +25,18 @@ fsio = { git = "https://github.com/bkoshik/fsio.git" }
 ## Usage
 Basic example:
 ```rust
-use fsio::fileio::{FileIO, flags::{open_flags::*, permission_flags::*, whence_flags::*}};
+use fsio::fileio::FileBuilder;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let mut file = FileIO::open("example.txt", READ_WRITE | CREATE | TRUNCATE, ALL)?;
+    let mut file = FileBuilder::new()
+        .read_write()
+        .create()
+        .truncate()
+        .permissions(0o755)
+        .open("test.txt");
     file.write("Hello, fsio!")?;
-    file.seek(0, START_POS)?;
 
-    let content = file.read()?;
+    let content = file.read_from_start()?;
     println!("File content: {}", content);
 
     Ok(())
@@ -44,10 +48,9 @@ Access file metadata:
 ```rust
 let metadata = file.metadata()?;
 
-println!("Size: {}", metadata.size);
-println!("UID: {}", metadata.uid);
-println!("GID: {}", metadata.gid);
-println!("Permissions: {}", metadata.permissions);
+println!("Size: {}", metadata.size());
+println!("UID: {}", metadata.uid());
+println!("GID: {}", metadata.gid());
 ```
 
 ## Contributing
