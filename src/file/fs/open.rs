@@ -9,7 +9,6 @@ use nix::{
     }, 
     sys::stat::Mode
 };
-use std::io::Error as IoError;
 use crate::{
     errors::{
         Error,
@@ -22,14 +21,14 @@ pub trait OpenFS<T>: Sized
 where
     T: AsRef<Path>,
 {
-    async fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self>;
+    fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self>;
 }
 
 impl<T> OpenFS<T> for File
 where
     T: AsRef<Path>,
 {
-    async fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self> {
+    fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self> {
         let file: OwnedFd = open(
             path.as_ref(),
             flags,
