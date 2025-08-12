@@ -5,7 +5,7 @@ pub mod prelude;
 
 #[cfg(test)]
 mod test {
-    static TEST_COUNT: usize = 1_000;
+    static TEST_COUNT: usize = 10_000;
 
     use std::{
         cell::RefCell,
