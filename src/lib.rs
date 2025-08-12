@@ -5,6 +5,7 @@ pub mod prelude;
 
 #[cfg(test)]
 mod test {
+    use serde_json::Value;
     use crate::{
         file::{
             FileType,
@@ -61,6 +62,20 @@ mod test {
             .open("test.txt")?;
 
         assert_eq!(other_file, file, "File should be opened");
+
+        let _ = file.truncate(0);
+
+        let json_data =
+r#"
+{
+    "name": "JSON Statham"
+    "age": 122
+    "yes?": true
+}
+"#;
+        let _ = file.write(json_data)?;
+        let data = file.json::<Value>()?;
+        println!("{:?}", data);
 
         return Ok(());
     }

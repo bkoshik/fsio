@@ -5,3 +5,4 @@ pub mod tell;
 pub mod insert;
 pub mod replace;
 pub mod truncate;
+mod serde;
