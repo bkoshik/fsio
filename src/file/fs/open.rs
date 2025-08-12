@@ -22,19 +22,19 @@ pub trait OpenFS<T>: Sized
 where
     T: AsRef<Path>,
 {
-    fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self>;
+    async fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self>;
 }
 
 impl<T> OpenFS<T> for File
 where
     T: AsRef<Path>,
 {
-    fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self> {
+    async fn open(path: T, flags: OFlag, perms: Mode) -> Result<Self> {
         let file: OwnedFd = open(
             path.as_ref(),
             flags,
             perms
-        ).map_err(|e| Error::Io(IoError::from_raw_os_error(e as i32)))?;
+        ).map_err(|e| Error::Errno(e))?;
 
         return Ok(File {
             file: file,

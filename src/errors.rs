@@ -1,4 +1,5 @@
 use std::path::PathBuf;
+use nix::errno::Errno;
 use thiserror::Error;
 
 pub type Result<T> = std::result::Result<T, Error>;
@@ -7,6 +8,9 @@ pub type Result<T> = std::result::Result<T, Error>;
 pub enum Error {
     #[error("I/O error: {0}")]
     Io(#[from] std::io::Error),
+
+    #[error("Errno: {0}")]
+    Errno(#[from] Errno),
 
     #[error("unsupported file format: {0}")]
     UnsupportedFormat(String),
