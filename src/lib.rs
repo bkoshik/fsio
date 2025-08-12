@@ -66,16 +66,16 @@ mod test {
         let _ = file.truncate(0);
 
         let json_data =
-r#"
+            r#"
 {
     "name": "JSON Statham",
     "age": 122,
-    "yes?": true,
+    "yes?": true
 }
 "#;
         let _ = file.write(json_data)?;
         let data = file.json::<Value>()?;
-        println!("{:?}", data);
+        println!("{:#?}", data);
 
         return Ok(());
     }
