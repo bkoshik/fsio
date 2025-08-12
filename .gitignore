@@ -17,4 +17,4 @@ target
 .idea/
 
 # Test files
-test.txt
+test_files/
