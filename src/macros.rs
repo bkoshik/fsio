@@ -1,3 +1,4 @@
+#[macro_export]
 macro_rules! define_bitflags {
     (
         $(#[$outer:meta])*
