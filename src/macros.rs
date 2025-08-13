@@ -8,6 +8,7 @@ macro_rules! define_bitflags {
         }
     ) => {
         ::bitflags::bitflags! {
+            #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
             pub struct $name_struct: $type {
                 $(
                     const $flag = $bit;

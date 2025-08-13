@@ -1,8 +1,7 @@
 use crate::define_bitflags;
 
 define_bitflags!(
-    
-    pub bitflag  OpenFlags: usize {
+    pub bitflag OpenFlags: usize {
         ReadOnly = 0x0,                     // libc::O_RDONLY
         WriteOnly = 0x1,                    // libc::O_WRONLY
         ReadWrite = 0x2,                    // libc::O_RDWR
