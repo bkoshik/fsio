@@ -2,22 +2,18 @@
 macro_rules! define_bitflags {
     (
         $(#[$outer:meta])*
-        let prefix = $prefix:ident;
+        let prefix = $Prefix:ident;
         pub struct $BitFlags:ident: $Type:ty {
-            $(
-                $(#[$inner:meta])*
-                $Flag:ident $(as $cast:ty)*
-            )+
+            $($Flag:ident),* $(,)+
         }
     ) => {
         ::bitflags::bitflags! {
             #[derive(Copy, Clone, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
             #[repr(transparent)]
             $(#[$outer])*
-            pub struct $BitFlags: $T {
+            pub struct $BitFlags: $Type {
                 $(
-                    $(#[$inner])*
-                    const $Flag = $prefix::$Flag $(as $cast)*;
+                    const $Flag = $Prefix::$Flag as $Type;
                 )+
             }
         }

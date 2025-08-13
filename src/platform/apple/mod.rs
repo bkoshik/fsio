@@ -1,1 +1,1 @@
-mod flags;
+pub mod flags;
