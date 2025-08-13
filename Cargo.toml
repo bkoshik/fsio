@@ -1,0 +1,12 @@
+[package]
+name = "fsio"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+
+[build-dependencies]
+cfg_aliases = "0.2.1"
