@@ -1,4 +1,3 @@
-mod fs;
 mod types;
 
 pub use types::*;
