@@ -1,6 +1,6 @@
 use crate::error::Error;
 
-pub trait FromRaw<T>: Sized 
+pub trait FromRaw<T>: Sized
 where
     T: AsRef<usize>,
 {
@@ -13,7 +13,6 @@ where
 {
     fn from_raw(err: T) -> Self {
         match err.as_ref() {
-            _ => Self::Unknown,
             1 => Self::PermissionDenied,
             2 => Self::NotFound,
             3 => Self::NoSuchProcess,
@@ -120,6 +119,7 @@ where
             104 => Self::NotRecoverable,
             105 => Self::OwnerDead,
             106 => Self::QueueFull,
+            _ => Self::Unknown,
         }
     }
 }
