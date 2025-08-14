@@ -1,4 +1,4 @@
+pub mod file;
 pub mod flags;
-mod prelude;
-mod file;
-mod error;
+pub mod error;
+pub mod prelude;

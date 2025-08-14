@@ -1,5 +1,7 @@
 use thiserror::Error;
 
+pub type Result<T> = std::result::Result<T, Error>;
+
 #[derive(Error, Debug, Clone, Eq, PartialEq)]
 #[repr(usize)]
 pub enum Error {
@@ -23,8 +25,8 @@ pub enum Error {
     AlreadyExists = 17,                                     // libc::EEXIST,
     CrossDeviceLink = 18,                                   // libc::EXDEV,
     NoSuchDevice = 19,                                      // libc::ENODEV,
-    NotADirectory = 20,                                     // libc::ENOTDIR,
-    IsADirectory = 21,                                      // libc::EISDIR,
+    NotDirectory = 20,                                     // libc::ENOTDIR,
+    IsDirectory = 21,                                      // libc::EISDIR,
     InvalidArgument(String) = 22,                           // libc::EINVAL,
     FileTableOverflow = 23,                                 // libc::ENFILE,
     TooManyOpenFiles = 24,                                  // libc::EMFILE,
@@ -102,7 +104,7 @@ pub enum Error {
     NoDataAvailable = 96,                                   // libc::ENODATA,
     LinkHasBeenSevered = 97,                                // libc::ENOLINK,
     NoStreamResources = 98,                                 // libc::ENOSR,
-    NotAStructuredStream = 99,                              // libc::ENOSTR,
+    NotStructuredStream = 99,                              // libc::ENOSTR,
     ProtocolError = 100,                                    // libc::EPROTO,
     TimerExpired = 101,                                     // libc::ETIME,
     OperationNotSupportedOnSocket = 102,                    // libc::EOPNOTSUPP,
