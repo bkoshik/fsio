@@ -6,6 +6,18 @@ edition = "2024"
 [lib]
 path = "src/lib.rs"
 
+[profile.dev]
+lto = "thin"
+
+[profile.test]
+lto = "thin"
+
+[profile.bench]
+lto = true
+
+[profile.release]
+lto = true
+
 [dependencies]
 libc = "1.0.0-alpha.1"
 thiserror = "2.0.14"
