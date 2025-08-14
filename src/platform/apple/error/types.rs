@@ -3,7 +3,7 @@ use thiserror::Error;
 pub type Result<T> = std::result::Result<T, Error>;
 
 #[derive(Error, Debug, Clone, Eq, PartialEq)]
-#[repr(usize)]
+#[repr(i32)]
 pub enum Error {
     Unknown = 0,
     PermissionDenied = 1,                                   // libc::EPERM,

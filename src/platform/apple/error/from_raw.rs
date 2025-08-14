@@ -1,18 +1,8 @@
 use crate::error::Error;
 
-pub trait FromRaw<T>: Sized
-where
-    T: AsRef<usize>,
-{
-    fn from_raw(err: T) -> Self;
-}
-
-impl<T> FromRaw<T> for Error
-where
-    T: AsRef<usize>,
-{
-    fn from_raw(err: T) -> Self {
-        match err.as_ref() {
+impl Error {
+    pub fn from_raw(err: i32) -> Self {
+        match err {
             1 => Self::PermissionDenied,
             2 => Self::NotFound,
             3 => Self::NoSuchProcess,
