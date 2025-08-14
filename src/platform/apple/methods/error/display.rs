@@ -1,5 +1,5 @@
 use std::fmt::Display;
-use crate::error::*;
+use crate::error::Error;
 
 impl Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -9,7 +9,7 @@ impl Display for Error {
             Self::NotFound => write!(f, "No such file or directory"),
             Self::NoSuchProcess => write!(f, "No such process"),
             Self::Interrupted => write!(f, "Interrupted"),
-            Self::IoError => write!(f, "I/O error"),
+            Self::IoError => write!(f, "I/O error_types"),
             Self::NoSuchDeviceOrAddress => write!(f, "No such device or address"),
             Self::ArgumentListTooLong => write!(f, "Argument list too long"),
             Self::ExecFormatError => write!(f, "Exec format error"),

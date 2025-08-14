@@ -2,7 +2,7 @@ use std::ffi::CString;
 use std::os::fd::{FromRawFd, OwnedFd};
 use libc::c_int;
 use crate::flags::{OpenFlags, PermissionFlags};
-use crate::error::*;
+use crate::error::{Error, Result};
 use crate::file::File;
 
 pub trait OpenFS<P>: Sized

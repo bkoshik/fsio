@@ -1,6 +1,6 @@
 use std::os::fd::AsRawFd;
 use crate::file::{File, FileMetadata};
-use crate::error::*;
+use crate::error::{Error, Result};
 
 impl File {
     pub fn metadata(&self) -> Result<FileMetadata> {

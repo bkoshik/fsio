@@ -1,5 +1,5 @@
 use std::ffi::c_void;
-use crate::error::*;
+use crate::error::{Error, Result};
 
 // This code snippet is adapted from the `nix` crate (https://github.com/nix-rust/nix)
 impl Error {

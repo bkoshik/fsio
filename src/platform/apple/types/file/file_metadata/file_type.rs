@@ -1,15 +1,4 @@
 use crate::flags::FileTypeFlags;
-use libc::stat;
-use std::os::fd::OwnedFd;
-
-#[derive(Debug)]
-pub struct File {
-    pub(crate) file: OwnedFd
-}
-
-pub struct FileMetadata {
-    pub(crate) metadata: stat
-}
 
 #[derive(Debug, PartialEq, Eq)]
 pub enum FileType {
