@@ -16,6 +16,7 @@ mod file {
     mod io {
         mod read;
         mod write;
+        mod seek;
     }
 }
 

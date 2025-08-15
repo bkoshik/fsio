@@ -1,5 +1,6 @@
 pub(crate) mod file {
     pub(crate) mod file;
+    pub(crate) mod seek_whence;
     pub(crate) mod file_metadata {
         pub(crate) mod file_metadata;
         pub(crate) mod file_type;
