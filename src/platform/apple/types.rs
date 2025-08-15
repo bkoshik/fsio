@@ -1,21 +1,18 @@
-pub mod file {
-    mod file;
-    pub use file::*;
-
-    mod file_metadata {
-        mod file_type;
-        pub use file_type::*;
-
-        mod file_metadata;
-        pub use file_metadata::*;
+pub(crate) mod file {
+    pub(crate) mod file;
+    pub(crate) mod file_metadata {
+        pub(crate) mod file_type;
+        pub(crate) mod file_metadata;
     }
-    pub use file_metadata::*;
 }
 
-pub mod error {
-    mod error;
-    pub use error::*;
+pub(crate) mod error {
+    pub(crate) mod error;
+    pub(crate) mod result;
+}
 
-    mod result;
-    pub use result::*;
+pub(crate) mod flags {
+    pub(crate) mod open_flags;
+    pub(crate) mod file_type_flags;
+    pub(crate) mod permission_flags;
 }
