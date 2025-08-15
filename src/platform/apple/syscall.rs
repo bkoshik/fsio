@@ -20,7 +20,7 @@ pub unsafe fn syscall(num: Syscall, args: &[i64; 6]) -> i64 {
         #[cfg(target_arch = "x86_64")]
         asm!(
             "syscall",
-            in("rax") num as i64,
+            in("rax") 0x200_000 + num as i64,
             in("rdi") args[0],
             in("rsi") args[1],
             in("rdx") args[2],
