@@ -3,6 +3,11 @@ mod platform {
     mod apple;
     #[cfg(apple_os)]
     pub use apple::*;
+
+    #[cfg(linux)]
+    mod linux;
+    #[cfg(linux)]
+    pub use linux::*;
 }
 pub use platform::*;
 
