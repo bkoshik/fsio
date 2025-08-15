@@ -9,6 +9,7 @@ mod file {
             mod permissions;
             mod inode;
             mod id;
+            mod size;
         }
     }
 }
