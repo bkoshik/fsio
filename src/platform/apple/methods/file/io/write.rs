@@ -9,7 +9,7 @@ impl<B> Write<B> for File
 where
     B: AsRef<str>,
 {
-    fn write(&mut self, buf: B) -> Result<usize> {
+    fn write(&mut self, buf: B) -> Result<u64> {
         let bytes = buf.as_ref().as_bytes();
 
         let written_len = {
@@ -21,7 +21,7 @@ where
             );
             Error::result(ret)?;
 
-            ret as usize
+            ret as u64
         };
 
         return Ok(written_len);

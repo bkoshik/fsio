@@ -1,7 +1,7 @@
 use crate::define_bitflags;
 
 define_bitflags!(
-    pub bitflag PermissionFlags: u32 {
+    pub bitflag PermissionFlags: u64 {
         MaskType = 0o777,
 
         AllRWX = 0o777,

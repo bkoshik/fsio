@@ -3,12 +3,12 @@ use crate::flags::PermissionFlags;
 
 impl FileMetadata {
     pub fn permissions(&self) -> Permissions {
-        return Permissions::from_raw(self.metadata.st_mode);
+        return Permissions::from_raw(self.metadata.st_mode as u64);
     }
 
     pub fn permission_flags(&self) -> PermissionFlags {
         return PermissionFlags::from_bits_truncate(
-            self.metadata.st_mode as u32 & PermissionFlags::MaskType.bits(),
+            self.metadata.st_mode as u64 & PermissionFlags::MaskType.bits(),
         );
     }
 }

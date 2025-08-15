@@ -1,5 +1,5 @@
 unsafe extern "C" {
-    pub fn syscall(num: i32, ...) -> isize;
+    pub fn syscall(num: i64, ...) -> i64;
 }
 
 #[repr(i32)]
@@ -439,8 +439,8 @@ pub enum Syscall {
     Invalid = 63,
 }
 
-impl From<Syscall> for i32 {
+impl From<Syscall> for i64 {
     fn from(syscall: Syscall) -> Self {
-        return syscall as i32;
+        return syscall as i64;
     }
 }

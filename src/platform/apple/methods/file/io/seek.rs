@@ -5,16 +5,16 @@ use crate::syscall::Syscall;
 use std::os::fd::AsRawFd;
 
 impl File {
-    pub fn seek(&self, whence: SeekWhence) -> Result<usize> {
+    pub fn seek(&self, whence: SeekWhence) -> Result<u64> {
         let offset = {
             let ret = match whence {
                 SeekWhence::StartPos(off) => syscall!(Syscall::Lseek, self.as_raw_fd(), off, 0),
                 SeekWhence::CurrentPos(off) => syscall!(Syscall::Lseek, self.as_raw_fd(), off, 1),
                 SeekWhence::EndPos(off) => syscall!(Syscall::Lseek, self.as_raw_fd(), off, 2),
             };
-            Error::result(ret);
+            Error::result(ret)?;
 
-            ret as usize
+            ret as u64
         };
 
         return Ok(offset);

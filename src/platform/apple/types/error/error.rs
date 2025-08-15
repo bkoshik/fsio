@@ -1,7 +1,7 @@
 use thiserror::Error;
 
 #[derive(Error, Debug, Clone, Eq, PartialEq)]
-#[repr(i32)]
+#[repr(i64)]
 pub enum Error {
     Unknown = 0,
     PermissionDenied = 1,                // libc::EPERM,

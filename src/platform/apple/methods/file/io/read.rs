@@ -5,7 +5,7 @@ use crate::syscall::Syscall;
 use std::os::fd::AsRawFd;
 
 impl File {
-    pub fn read(&self) -> Result<(String, usize)> {
+    pub fn read(&self) -> Result<(String, u64)> {
         let mut content_bytes = vec![0u8; self.metadata()?.size() as usize];
 
         let read_len = {
@@ -17,10 +17,10 @@ impl File {
             );
             Error::result(ret)?;
 
-            ret as usize
+            ret as u64
         };
 
-        content_bytes.truncate(read_len);
+        content_bytes.truncate(read_len as usize);
         let content =
             String::from_utf8(content_bytes.to_vec()).map_err(|_| Error::IllegalByteSequence)?;
 

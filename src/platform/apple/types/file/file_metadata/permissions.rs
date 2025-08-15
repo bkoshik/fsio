@@ -13,8 +13,8 @@ pub struct Access {
 }
 
 impl Permissions {
-    pub fn from_raw(raw_mode: u16) -> Self {
-        let raw_mode = raw_mode as u32;
+    pub fn from_raw(raw_mode: u64) -> Self {
+        let raw_mode = raw_mode;
 
         return Self {
             owner: Access {

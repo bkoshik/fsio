@@ -1,7 +1,7 @@
 use crate::error::Error;
 
 impl Error {
-    pub fn from_raw(err: i32) -> Self {
+    pub fn from_raw(err: i64) -> Self {
         match err {
             1 => Self::PermissionDenied,
             2 => Self::NotFound,

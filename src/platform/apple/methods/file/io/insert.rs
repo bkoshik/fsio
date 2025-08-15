@@ -6,7 +6,7 @@ impl<B> Insert<B> for File
 where
     B: AsRef<str>,
 {
-    fn insert(&mut self, whence: SeekWhence, buf: B) -> Result<usize> {
+    fn insert(&mut self, whence: SeekWhence, buf: B) -> Result<u64> {
         let original_pos = self.tell()?;
 
         let target_pos = self.seek(whence)?;
