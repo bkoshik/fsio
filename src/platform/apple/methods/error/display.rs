@@ -1,5 +1,5 @@
-use std::fmt::Display;
 use crate::error::Error;
+use std::fmt::Display;
 
 impl Display for Error {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
@@ -51,7 +51,9 @@ impl Display for Error {
             Self::SocketTypeNotSupported => write!(f, "Socket type is not supported"),
             Self::OperationNotSupported => write!(f, "Operation is not supported"),
             Self::ProtocolFamilyNotSupported => write!(f, "Protocol family is not supported"),
-            Self::AddressFamilyNotSupported => write!(f, "Address family is not supported by protocol"),
+            Self::AddressFamilyNotSupported => {
+                write!(f, "Address family is not supported by protocol")
+            }
             Self::AddressInUse => write!(f, "Address in use"),
             Self::AddressNotAvailable => write!(f, "Address is not available"),
             Self::NetworkDown => write!(f, "Network down"),
@@ -106,7 +108,9 @@ impl Display for Error {
             Self::NotStructuredStream => write!(f, "Not a structured stream"),
             Self::ProtocolError => write!(f, "Protocol error"),
             Self::TimerExpired => write!(f, "Timer expired"),
-            Self::OperationNotSupportedOnSocket => write!(f, "Operation is not supported on socket"),
+            Self::OperationNotSupportedOnSocket => {
+                write!(f, "Operation is not supported on socket")
+            }
             Self::NoPolicy => write!(f, "No policy"),
             Self::NotRecoverable => write!(f, "Not recoverable"),
             Self::OwnerDead => write!(f, "Owner dead"),

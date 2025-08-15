@@ -1,5 +1,5 @@
-use std::ffi::c_void;
 use crate::error::{Error, Result};
+use std::ffi::c_void;
 
 // This code snippet is adapted from the `nix` crate (https://github.com/nix-rust/nix)
 impl Error {
@@ -19,30 +19,30 @@ pub trait ErrorSentinel: Sized {
 
 impl ErrorSentinel for isize {
     fn sentinel() -> Self {
-        return -1
+        return -1;
     }
 }
 
 impl ErrorSentinel for i32 {
     fn sentinel() -> Self {
-        return -1
+        return -1;
     }
 }
 
 impl ErrorSentinel for i64 {
     fn sentinel() -> Self {
-        return -1
+        return -1;
     }
 }
 
 impl ErrorSentinel for *mut c_void {
     fn sentinel() -> Self {
-        return -1isize as *mut c_void
+        return -1isize as *mut c_void;
     }
 }
 
 impl ErrorSentinel for libc::sighandler_t {
     fn sentinel() -> Self {
-        return !0
+        return !0;
     }
 }

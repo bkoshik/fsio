@@ -1,6 +1,6 @@
+use crate::error::*;
 use crate::file::{File, SeekWhence};
 use crate::prelude::{Insert, Write};
-use crate::error::*;
 
 impl<B> Insert<B> for File
 where

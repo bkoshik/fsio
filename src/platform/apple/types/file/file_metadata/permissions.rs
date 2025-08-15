@@ -32,6 +32,6 @@ impl Permissions {
                 write: raw_mode & PermissionFlags::OtherWrite.bits() != 0,
                 exec: raw_mode & PermissionFlags::OtherExec.bits() != 0,
             },
-        }
+        };
     }
 }

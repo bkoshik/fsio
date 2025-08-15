@@ -1,33 +1,33 @@
 mod file {
     mod fs {
-        mod open;
-        mod metadata;
         mod as_fd;
         mod eq;
+        mod metadata;
+        mod open;
         mod file_metadata {
             mod file_type;
-            mod permissions;
-            mod inode;
             mod id;
+            mod inode;
+            mod permissions;
             mod size;
             mod time;
         }
     }
     mod io {
+        mod insert;
         mod read;
-        mod write;
         mod seek;
         mod tell;
-        mod insert;
         mod truncate;
+        mod write;
     }
 }
 
 mod error {
+    mod clear;
+    mod display;
     mod from_raw;
     mod last;
-    mod display;
-    mod set;
-    mod clear;
     mod result;
+    mod set;
 }

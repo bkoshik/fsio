@@ -1,5 +1,5 @@
-mod types;
 mod methods;
+mod types;
 
 pub mod api;
 pub use api::*;

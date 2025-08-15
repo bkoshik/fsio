@@ -1,8 +1,8 @@
-
 # fsio
 
 `fsio` is a lightweight, low-level Rust library for advanced file I/O operations on Unix-like systems.  
-It provides safe and idiomatic Rust abstractions over system calls, supporting file opening, reading, writing, metadata handling, and fine-grained control over file flags and permissions.
+It provides safe and idiomatic Rust abstractions over system calls, supporting file opening, reading, writing, metadata
+handling, and fine-grained control over file flags and permissions.
 
 ## Features
 
@@ -23,7 +23,9 @@ fsio = { git = "https://github.com/bkoshik/fsio.git" }
 ```
 
 ## Usage
+
 Basic example:
+
 ```rust
 use fsio::fileio::FileBuilder;
 
@@ -44,9 +46,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 ```
 
 ## File Metadata
+
 Access file metadata:
+
 ```rust
-let metadata = file.metadata()?;
+let metadata = file.metadata() ?;
 
 println!("Size: {}", metadata.size());
 println!("UID: {}", metadata.uid());
@@ -54,9 +58,11 @@ println!("GID: {}", metadata.gid());
 ```
 
 ## Contributing
+
 Contributions are welcome! Feel free to open issues or pull requests.
 
 ## License
+
 Apache License 2.0 © 2025 bkoshik
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

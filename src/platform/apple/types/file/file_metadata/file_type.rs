@@ -23,7 +23,7 @@ impl FileType {
             FileTypeFlags::Regular => Some(Self::Regular),
             FileTypeFlags::Symlink => Some(Self::Symlink),
             FileTypeFlags::Socket => Some(Self::Socket),
-            _ => None
-        }
+            _ => None,
+        };
     }
 }

@@ -3,12 +3,12 @@ use crate::define_bitflags;
 define_bitflags!(
     pub bitflag PermissionFlags: u32 {
         MaskType = 0o777,
-        
+
         AllRWX = 0o777,
         AllRead = 0o444,
         AllWrite = 0o222,
         AllExec = 0o111,
-        
+
         OwnerRWX = 0o700,       // libc::S_IRWXU
         OwnerRead = 0o400,      // libc::S_IRUSR | libc::S_IREAD
         OwnerWrite = 0o200,     // libc::S_IWUSR | libc::S_IWRITE
