@@ -1,12 +1,19 @@
-use crate::error::Error;
+use crate::error::*;
 use std::arch::asm;
 
-pub unsafe fn syscall(num: Syscall, args: &[i64; 6]) -> i64 {
+pub fn syscall(num: Syscall, args: &[i64; 6]) -> Result<i64> {
     let result: i64;
+    #[cfg(target_arch = "aarch64")]
+    let mut cf_err: u64;
+    #[cfg(target_arch = "x86_64")]
+    let mut cf_err: u8;
+
+
     unsafe {
         #[cfg(target_arch = "aarch64")]
         asm!(
             "svc #0",
+            "cset {cf}, cs",
             in("x0") args[0],
             in("x1") args[1],
             in("x2") args[2],
@@ -15,12 +22,15 @@ pub unsafe fn syscall(num: Syscall, args: &[i64; 6]) -> i64 {
             in("x5") args[5],
             in("x16") num as i64,
             lateout("x0") result,
+            cf = lateout(reg) cf_err,
+            options(nostack),
         );
 
         #[cfg(target_arch = "x86_64")]
         asm!(
             "syscall",
-            in("rax") 0x2_000_000 + num as i64,
+            "setc {cf}",
+            in("rax") 0x2_000_000u64 + num as u64,
             in("rdi") args[0],
             in("rsi") args[1],
             in("rdx") args[2],
@@ -28,14 +38,17 @@ pub unsafe fn syscall(num: Syscall, args: &[i64; 6]) -> i64 {
             in("r8")  args[4],
             in("r9")  args[5],
             lateout("rax") result,
+            cf = lateout(reg_byte) cf_err,
             clobber_abi("C"),
+            options(nostack),
         );
     }
-    if result < 0 {
-        Error::set_raw(-result);
+    if cf_err != 0 {
+        Error::set_raw(result);
+        return Err(Error::last());
     }
 
-    return result;
+    return Ok(result);
 }
 
 #[repr(i64)]

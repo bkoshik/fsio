@@ -10,14 +10,13 @@ where
     fn write(&mut self, buf: B) -> Result<u64> {
         let bytes = buf.as_ref().as_bytes();
 
-        let written_len = unsafe {
+        let written_len = {
             let mut args = [0i64; 6];
             args[0] = self.file as i64;
             args[1] = bytes.as_ptr() as i64;
             args[2] = bytes.len() as i64;
 
-            let ret = syscall(Syscall::Write, &args);
-            Error::result(ret)?;
+            let ret = syscall(Syscall::Write, &args)?;
 
             ret as u64
         };

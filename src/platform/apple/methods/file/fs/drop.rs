@@ -6,8 +6,6 @@ impl Drop for File {
         let mut args = [0i64; 6];
         args[0] = self.file as i64;
 
-        unsafe {
-            syscall(Syscall::Close, &args);
-        }
+        let _ = syscall(Syscall::Close, &args).unwrap();
     }
 }
