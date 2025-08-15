@@ -8,7 +8,6 @@ pub fn syscall(num: Syscall, args: &[i64; 6]) -> Result<i64> {
     #[cfg(target_arch = "x86_64")]
     let mut cf_err: u8;
 
-
     unsafe {
         #[cfg(target_arch = "aarch64")]
         asm!(

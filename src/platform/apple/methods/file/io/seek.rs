@@ -14,19 +14,19 @@ impl File {
                     args[2] = 0;
 
                     syscall(Syscall::Lseek, &args)
-                },
+                }
                 SeekWhence::CurrentPos(off) => {
                     args[1] = off;
                     args[2] = 1;
 
                     syscall(Syscall::Lseek, &args)
-                },
+                }
                 SeekWhence::EndPos(off) => {
                     args[1] = off;
                     args[2] = 2;
 
                     syscall(Syscall::Lseek, &args)
-                },
+                }
             }?;
 
             ret as u64
