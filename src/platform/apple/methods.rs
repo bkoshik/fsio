@@ -13,6 +13,9 @@ mod file {
             mod time;
         }
     }
+    mod io {
+        mod read;
+    }
 }
 
 mod error {
