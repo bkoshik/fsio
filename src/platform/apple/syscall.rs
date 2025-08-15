@@ -39,7 +39,6 @@ pub fn syscall(num: Syscall, args: &[i64; 6]) -> Result<i64> {
             in("r9")  args[5],
             lateout("rax") result,
             cf = lateout(reg_byte) cf_err,
-            clobber_abi("C"),
             options(nostack),
         );
     }
