@@ -18,6 +18,7 @@ mod file {
         mod write;
         mod seek;
         mod tell;
+        mod insert;
     }
 }
 

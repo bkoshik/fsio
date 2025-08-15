@@ -5,11 +5,11 @@ use crate::prelude::Write;
 use crate::syscall;
 use crate::syscall::Syscall;
 
-impl<T> Write<T> for File
+impl<B> Write<B> for File
 where
-    T: AsRef<str>,
+    B: AsRef<str>,
 {
-    fn write(&mut self, buf: T) -> Result<usize> {
+    fn write(&mut self, buf: B) -> Result<usize> {
         let bytes = buf.as_ref().as_bytes();
 
         let written_len = syscall!(

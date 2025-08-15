@@ -1,6 +1,6 @@
-pub trait Write<T>: Sized
+pub trait Write<B>: Sized
 where
-    T: AsRef<str>
+    B: AsRef<str>
 {
-    fn write(&mut self, buf: T) -> crate::error::Result<usize>;
+    fn write(&mut self, buf: B) -> crate::error::Result<usize>;
 }
