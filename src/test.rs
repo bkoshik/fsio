@@ -1,5 +1,6 @@
 use crate::file::{File, SeekWhence};
 use crate::flags::{OpenFlags, PermissionFlags};
+use crate::prelude::{Insert, OpenFS, Write};
 
 #[test]
 fn open_file() -> Result<(), Box<dyn std::error::Error>> {
