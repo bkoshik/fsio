@@ -35,6 +35,5 @@ mod error {
     mod display;
     mod from_raw;
     mod last;
-    mod result;
     mod set;
 }
