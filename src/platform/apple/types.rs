@@ -1,8 +1,9 @@
 pub(crate) mod file {
     pub(crate) mod file;
     pub(crate) mod file_metadata {
-        pub(crate) mod file_type;
         pub(crate) mod file_metadata;
+        pub(crate) mod file_type;
+        pub(crate) mod permissions;
     }
 }
 

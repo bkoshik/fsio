@@ -1,7 +1,8 @@
 pub mod file {
     pub use crate::platform::apple::types::file::file::*;
-    pub use crate::platform::apple::types::file::file_metadata::file_type::*;
     pub use crate::platform::apple::types::file::file_metadata::file_metadata::*;
+    pub use crate::platform::apple::types::file::file_metadata::file_type::*;
+    pub use crate::platform::apple::types::file::file_metadata::permissions::*;
 }
 
 pub mod error {

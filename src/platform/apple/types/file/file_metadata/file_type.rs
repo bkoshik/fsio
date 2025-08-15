@@ -12,17 +12,17 @@ pub enum FileType {
 }
 
 impl FileType {
-    pub fn from_raw(raw_mode: usize) -> Option<FileType> {
+    pub fn from_raw(raw_mode: usize) -> Option<Self> {
         let bits = raw_mode & FileTypeFlags::MaskType.bits();
 
         return match FileTypeFlags::from_bits_truncate(bits) {
-            FileTypeFlags::NamedPipe => Some(FileType::NamedPipe),
-            FileTypeFlags::CharacterDevice => Some(FileType::CharacterDevice),
-            FileTypeFlags::Directory => Some(FileType::Directory),
-            FileTypeFlags::BlockDevice => Some(FileType::BlockDevice),
-            FileTypeFlags::Regular => Some(FileType::Regular),
-            FileTypeFlags::Symlink => Some(FileType::Symlink),
-            FileTypeFlags::Socket => Some(FileType::Socket),
+            FileTypeFlags::NamedPipe => Some(Self::NamedPipe),
+            FileTypeFlags::CharacterDevice => Some(Self::CharacterDevice),
+            FileTypeFlags::Directory => Some(Self::Directory),
+            FileTypeFlags::BlockDevice => Some(Self::BlockDevice),
+            FileTypeFlags::Regular => Some(Self::Regular),
+            FileTypeFlags::Symlink => Some(Self::Symlink),
+            FileTypeFlags::Socket => Some(Self::Socket),
             _ => None
         }
     }
