@@ -3,6 +3,7 @@ mod file {
         mod open;
         mod metadata;
         mod as_fd;
+        mod eq;
         mod file_metadata {
             mod file_type;
             mod permissions;
