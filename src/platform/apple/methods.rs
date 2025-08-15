@@ -8,6 +8,7 @@ mod file {
             mod file_type;
             mod permissions;
             mod inode;
+            mod id;
         }
     }
 }
