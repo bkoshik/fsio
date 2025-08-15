@@ -1,11 +1,11 @@
 mod file {
     mod fs {
-        mod open;
         mod drop;
+        mod eq;
         #[cfg(feature = "from")]
         mod from;
-        mod eq;
         mod metadata;
+        mod open;
         mod file_metadata {
             mod file_type;
             mod id;

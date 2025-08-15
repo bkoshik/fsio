@@ -1,8 +1,43 @@
-unsafe extern "C" {
-    pub fn syscall(num: i64, ...) -> i64;
+use crate::error::Error;
+use std::arch::asm;
+
+pub unsafe fn syscall(num: Syscall, args: &[i64; 6]) -> i64 {
+    let result: i64;
+    unsafe {
+        #[cfg(target_arch = "aarch64")]
+        asm!(
+            "svc #0",
+            in("x0") args[0],
+            in("x1") args[1],
+            in("x2") args[2],
+            in("x3") args[3],
+            in("x4") args[4],
+            in("x5") args[5],
+            in("x16") num as i64,
+            lateout("x0") result,
+        );
+
+        #[cfg(target_arch = "x86_64")]
+        asm!(
+            "syscall",
+            in("rax") num as i64,
+            in("rdi") args[0],
+            in("rsi") args[1],
+            in("rdx") args[2],
+            in("r10") args[3],
+            in("r8")  args[4],
+            in("r9")  args[5],
+            lateout("rax") result,
+        );
+    }
+    if result < 0 {
+        Error::set_raw(-result);
+    }
+
+    return result;
 }
 
-#[repr(i32)]
+#[repr(i64)]
 pub enum Syscall {
     Syscall = 0,
     Exit = 1,

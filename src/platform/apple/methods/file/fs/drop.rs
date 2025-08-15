@@ -1,9 +1,13 @@
 use crate::file::File;
-use crate::syscall;
-use crate::syscall::Syscall;
+use crate::syscall::*;
 
 impl Drop for File {
     fn drop(&mut self) {
-        syscall!(Syscall::Close, self.file);
+        let mut args = [0i64; 6];
+        args[0] = self.file as i64;
+
+        unsafe {
+            syscall(Syscall::Close, &args);
+        }
     }
 }

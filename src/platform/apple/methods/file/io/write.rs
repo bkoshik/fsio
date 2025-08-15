@@ -1,8 +1,7 @@
 use crate::error::*;
 use crate::file::File;
 use crate::prelude::Write;
-use crate::syscall;
-use crate::syscall::Syscall;
+use crate::syscall::*;
 
 impl<B> Write<B> for File
 where
@@ -11,13 +10,13 @@ where
     fn write(&mut self, buf: B) -> Result<u64> {
         let bytes = buf.as_ref().as_bytes();
 
-        let written_len = {
-            let ret = syscall!(
-                Syscall::Write,
-                self.file,
-                bytes.as_ptr() as *const libc::c_void,
-                bytes.len()
-            );
+        let written_len = unsafe {
+            let mut args = [0i64; 6];
+            args[0] = self.file as i64;
+            args[1] = bytes.as_ptr() as i64;
+            args[2] = bytes.len() as i64;
+
+            let ret = syscall(Syscall::Write, &args);
             Error::result(ret)?;
 
             ret as u64

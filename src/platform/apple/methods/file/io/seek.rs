@@ -1,15 +1,32 @@
 use crate::error::*;
 use crate::file::{File, SeekWhence};
-use crate::syscall;
-use crate::syscall::Syscall;
+use crate::syscall::*;
 
 impl File {
     pub fn seek(&self, whence: SeekWhence) -> Result<u64> {
+        let mut args = [0i64; 6];
+        args[0] = self.file as i64;
+
         let offset = {
             let ret = match whence {
-                SeekWhence::StartPos(off) => syscall!(Syscall::Lseek, self.file, off, 0),
-                SeekWhence::CurrentPos(off) => syscall!(Syscall::Lseek, self.file, off, 1),
-                SeekWhence::EndPos(off) => syscall!(Syscall::Lseek, self.file, off, 2),
+                SeekWhence::StartPos(off) => unsafe {
+                    args[1] = off as i64;
+                    args[2] = 0;
+
+                    syscall(Syscall::Lseek, &args)
+                },
+                SeekWhence::CurrentPos(off) => unsafe {
+                    args[1] = off;
+                    args[2] = 1;
+
+                    syscall(Syscall::Lseek, &args)
+                },
+                SeekWhence::EndPos(off) => unsafe {
+                    args[1] = off;
+                    args[2] = 2;
+
+                    syscall(Syscall::Lseek, &args)
+                },
             };
             Error::result(ret)?;
 
