@@ -16,12 +16,17 @@ mod file {
         }
     }
     mod io {
-        mod insert;
         mod read;
         mod seek;
-        mod tell;
         mod truncate;
         mod write;
+    }
+    #[cfg(feature = "extra")]
+    mod extra {
+        mod io {
+            mod insert;
+            mod tell;
+        }
     }
 }
 

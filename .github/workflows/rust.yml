@@ -62,7 +62,7 @@ jobs:
         run: mkdir test_files
 
       - name: Build
-        run: cargo build --verbose --release --target ${{ matrix.target }}
+        run: cargo build --all-features --verbose --release --target ${{ matrix.target }}
 
       - name: Run tests
-        run: cargo test --verbose --target ${{ matrix.target }}
+        run: cargo test --all-features --verbose --target ${{ matrix.target }}

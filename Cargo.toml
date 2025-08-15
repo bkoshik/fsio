@@ -8,6 +8,7 @@ path = "src/lib.rs"
 
 [features]
 from = []
+extra = []
 
 [profile.dev]
 lto = "thin"
