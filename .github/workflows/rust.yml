@@ -58,6 +58,9 @@ jobs:
             target
           key: ${{ runner.os }}-${{ matrix.arch }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
+      - name: Create test files directory
+        run: mkdir test_files
+
       - name: Build
         run: cargo build --verbose --release --target ${{ matrix.target }}
 
