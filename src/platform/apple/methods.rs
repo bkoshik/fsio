@@ -10,6 +10,7 @@ mod file {
             mod inode;
             mod id;
             mod size;
+            mod time;
         }
     }
 }
