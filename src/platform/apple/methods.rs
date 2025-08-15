@@ -19,6 +19,7 @@ mod file {
         mod seek;
         mod tell;
         mod insert;
+        mod truncate;
     }
 }
 
