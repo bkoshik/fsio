@@ -21,7 +21,7 @@ where
             .map_err(|_| Error::InvalidArgument)?;
 
         let raw_fd = unsafe {
-            libc::open(c_path.as_ptr(), open_flags.bits() as c_int, perms.bits())
+            libc::syscall(56, -100, c_path.as_ptr(), open_flags.bits() as c_int, perms.bits())
         };
         Error::result(raw_fd)?;
 
