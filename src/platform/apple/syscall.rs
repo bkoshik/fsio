@@ -28,6 +28,7 @@ pub unsafe fn syscall(num: Syscall, args: &[i64; 6]) -> i64 {
             in("r8")  args[4],
             in("r9")  args[5],
             lateout("rax") result,
+            clobber_abi("C"),
         );
     }
     if result < 0 {
