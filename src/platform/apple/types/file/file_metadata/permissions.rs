@@ -14,7 +14,9 @@ pub struct Access {
 }
 
 impl Permissions {
-    pub fn from_raw(raw_mode: usize) -> Self {
+    pub fn from_raw(raw_mode: u16) -> Self {
+        let raw_mode = raw_mode as u32;
+        
         return Self {
             owner: Access {
                 read: raw_mode & PermissionFlags::OwnerRead.bits() != 0,

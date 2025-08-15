@@ -1,7 +1,7 @@
 use crate::define_bitflags;
 
 define_bitflags!(
-    pub bitflag FileTypeFlags: usize {
+    pub bitflag FileTypeFlags: u32 {
         NamedPipe = 0o10_000,           // libc::S_IFIFO
         CharacterDevice = 0o20_000,     // libc::S_IFCHR
         Directory = 0o40_000,           // libc::S_IFDIR

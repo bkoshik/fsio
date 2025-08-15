@@ -12,8 +12,8 @@ pub enum FileType {
 }
 
 impl FileType {
-    pub fn from_raw(raw_mode: usize) -> Option<Self> {
-        let bits = raw_mode & FileTypeFlags::MaskType.bits();
+    pub fn from_raw(raw_mode: u16) -> Option<Self> {
+        let bits = raw_mode as u32 & FileTypeFlags::MaskType.bits();
 
         return match FileTypeFlags::from_bits_truncate(bits) {
             FileTypeFlags::NamedPipe => Some(Self::NamedPipe),

@@ -3,10 +3,10 @@ use crate::flags::FileTypeFlags;
 
 impl FileMetadata {
     pub fn file_type(&self) -> Option<FileType> {
-        return FileType::from_raw(self.metadata.st_mode as usize)
+        return FileType::from_raw(self.metadata.st_mode)
     }
 
     pub fn file_type_flags(&self) -> FileTypeFlags {
-        return FileTypeFlags::from_bits_truncate(self.metadata.st_mode as usize & FileTypeFlags::MaskType.bits())
+        return FileTypeFlags::from_bits_truncate(self.metadata.st_mode as u32 & FileTypeFlags::MaskType.bits())
     }
 }

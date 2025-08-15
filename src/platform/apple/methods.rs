@@ -6,6 +6,7 @@ mod file {
         mod file_metadata {
             mod file_type;
             mod permissions;
+            mod inode;
         }
     }
 }
