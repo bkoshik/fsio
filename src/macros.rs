@@ -17,3 +17,12 @@ macro_rules! define_bitflags {
         }
     }
 }
+
+#[macro_export]
+macro_rules! syscall {
+    ($num:expr $(, $arg:expr)*) => {
+        unsafe {
+            crate::syscall::syscall($num.into() $(, $arg)*)
+        }
+    };
+}

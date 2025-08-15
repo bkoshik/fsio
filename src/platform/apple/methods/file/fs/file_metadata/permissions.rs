@@ -1,4 +1,3 @@
-use bitflags::Flags;
 use crate::file::{FileMetadata, Permissions};
 use crate::flags::PermissionFlags;
 

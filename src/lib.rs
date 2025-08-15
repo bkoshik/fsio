@@ -7,3 +7,6 @@ mod platform {
 pub use platform::*;
 
 mod macros;
+
+#[cfg(test)]
+mod test;
