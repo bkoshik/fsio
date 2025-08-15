@@ -2,7 +2,6 @@ use crate::error::*;
 use crate::file::File;
 use crate::syscall;
 use crate::syscall::Syscall;
-use std::os::fd::AsRawFd;
 
 impl File {
     pub fn read(&self) -> Result<(String, u64)> {
@@ -11,7 +10,7 @@ impl File {
         let read_len = {
             let ret = syscall!(
                 Syscall::Read,
-                self.as_raw_fd(),
+                self.file,
                 content_bytes.as_mut_ptr() as *mut libc::c_void,
                 content_bytes.len()
             );

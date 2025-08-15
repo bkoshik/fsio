@@ -3,7 +3,6 @@ use crate::file::File;
 use crate::prelude::Write;
 use crate::syscall;
 use crate::syscall::Syscall;
-use std::os::fd::AsRawFd;
 
 impl<B> Write<B> for File
 where
@@ -15,7 +14,7 @@ where
         let written_len = {
             let ret = syscall!(
                 Syscall::Write,
-                self.as_raw_fd(),
+                self.file,
                 bytes.as_ptr() as *const libc::c_void,
                 bytes.len()
             );

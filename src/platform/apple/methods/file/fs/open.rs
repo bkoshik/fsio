@@ -5,7 +5,6 @@ use crate::prelude::OpenFS;
 use crate::syscall;
 use crate::syscall::Syscall;
 use std::ffi::CString;
-use std::os::fd::{FromRawFd, OwnedFd, RawFd};
 
 impl<P> OpenFS<P> for File
 where
@@ -14,7 +13,7 @@ where
     fn open(path: P, open_flags: OpenFlags, perms: PermissionFlags) -> Result<Self> {
         let c_path = CString::new(path.as_ref()).map_err(|_| Error::InvalidArgument)?;
 
-        let raw_fd = {
+        let fd = {
             let ret = syscall!(
                 Syscall::Openat,
                 -2,
@@ -24,11 +23,9 @@ where
             );
             Error::result(ret)?;
 
-            ret as RawFd
+            ret as u64
         };
 
-        return Ok(Self {
-            file: unsafe { OwnedFd::from_raw_fd(raw_fd) },
-        });
+        return Ok(Self { file: fd });
     }
 }
