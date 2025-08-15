@@ -15,25 +15,25 @@ jobs:
   build_and_test:
     strategy:
       matrix:
-        os: [ ubuntu-latest, macos-latest ]
-        arch: [ x86_64, aarch64 ]
+        os: [ macos-latest ]
+        arch: [ aarch64 ]
         include:
-#          - os: ubuntu-latest
-#            arch: x86_64
-#            target: x86_64-unknown-linux-gnu
-#            os_runner: ubuntu-latest
-#          - os: ubuntu-latest
-#            arch: aarch64
-#            target: aarch64-unknown-linux-gnu
-#            os_runner: ubuntu-latest
-#          - os: macos-latest
-#            arch: x86_64
-#            target: x86_64-apple-darwin
-#            os_runner: macos-latest
           - os: macos-latest
             arch: aarch64
             target: aarch64-apple-darwin
             os_runner: macos-latest
+#          - os: macos-latest
+#            arch: x86_64
+#            target: x86_64-apple-darwin
+#            os_runner: macos-latest
+#          - os: ubuntu-latest
+#            arch: aarch64
+#            target: aarch64-unknown-linux-gnu
+#            os_runner: ubuntu-latest
+#          - os: ubuntu-latest
+#            arch: x86_64
+#            target: x86_64-unknown-linux-gnu
+#            os_runner: ubuntu-latest
 
     name: Build & Test on ${{ matrix.os_runner }} (${{ matrix.arch }})
 
